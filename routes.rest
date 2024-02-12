@@ -1,0 +1,19 @@
+// LOCALHOST
+
+### Get all contacts
+GET http://localhost:3000/contacts
+
+### Get a single contact by ID
+GET http://localhost:3000/contacts/65b5903a4ba2167933005a17
+
+### Create a new contact
+POST http://localhost:3000/contacts
+content-type: application/json
+    
+{
+    "firstName": "Jar Jar",
+    "lastName": "Binks",
+    "email": "jar@jar.com",
+    "favoriteColor": "Brown",
+    "birthday": "05/19/1999"
+}

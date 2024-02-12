@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Lorem Ipsum",
+    "author": "Colby Hale",
+    "createdDate": "2/06/2024",
+    "lastEditDate": "2/10/2024",
+    "topics": ["Miscellaneous", "Placeholder"],
+    "status": "Draft",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  {
+    "title": "About This Blog",
+    "author": "Colby Hale",
+    "createdDate": "2/06/2024",
+    "lastEditDate": "2/10/2024",
+    "topics": ["Blogging", "Miscellaneous"],
+    "status": "Published",
+    "content": "Hello, and welcome to my blog. I am a software engineer and I built this blog to test my skills."
+  }
+]
