@@ -5,9 +5,9 @@ const doc = {
     title: 'My API',
     description: 'Blog API'
   },
-  //host: 'cse341-0eje.onrender.com',
-  host: 'localhost:3000',
-  schemes: ['http']
+  host: 'blog-api-service-ehy4.onrender.com',
+  //host: 'localhost:3000',
+  schemes: ['https']
 };
 
 const outputFile = './swagger.json';

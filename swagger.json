@@ -5,10 +5,10 @@
     "description": "Blog API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "blog-api-service-ehy4.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs": {
@@ -98,6 +98,7 @@
         }
       },
       "put": {
+        "tags": ["Not Yet Implemented"],
         "description": "",
         "responses": {
           "default": {
@@ -106,6 +107,7 @@
         }
       },
       "delete": {
+        "tags": ["Not Yet Implemented"],
         "description": "",
         "responses": {
           "default": {

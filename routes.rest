@@ -1,19 +1,40 @@
 // LOCALHOST
 
-### Get all contacts
-GET http://localhost:3000/contacts
+### Get all posts
+GET http://localhost:3000/posts
 
-### Get a single contact by ID
-GET http://localhost:3000/contacts/65b5903a4ba2167933005a17
+### Get a single post by ID
+GET http://localhost:3000/posts/65c81c2049e45e4778590256
 
-### Create a new contact
-POST http://localhost:3000/contacts
+### Create a new post
+POST http://localhost:3000/posts
 content-type: application/json
     
 {
-    "firstName": "Jar Jar",
-    "lastName": "Binks",
-    "email": "jar@jar.com",
-    "favoriteColor": "Brown",
-    "birthday": "05/19/1999"
+  "title": "any",
+  "author": "any",
+  "topics": "any",
+  "status": "any",
+  "content": "any"
+}
+
+
+// PRODUCTION Deploy
+
+### Get all posts
+GET https://blog-api-service-ehy4.onrender.com/posts
+
+### Get a single post by ID
+GET https://blog-api-service-ehy4.onrender.com/posts/65c81c2049e45e4778590256
+
+### Create a new post
+POST https://blog-api-service-ehy4.onrender.com/posts
+content-type: application/json
+    
+{
+  "title": "any",
+  "author": "any",
+  "topics": "any",
+  "status": "any",
+  "content": "any"
 }
