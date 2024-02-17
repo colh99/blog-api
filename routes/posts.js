@@ -12,9 +12,9 @@ router.get('/:id', controller.getPostById);
 router.post('/', controller.createPost);
 
 // Route to UPDATE a post
-router.put('/:id',);
+router.put('/:id', controller.updatePost);
 
 // Route to DELETE a post
-router.delete('/:id',);
+router.delete('/:id', controller.deletePost);
 
 module.exports = router;

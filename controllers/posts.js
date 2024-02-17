@@ -35,13 +35,7 @@ const getPostById = async (req, res) => {
 // Create a new post using json data
 const createPost = async (req, res) => {
   try {
-    // Get the current date
     let currentDate = new Date();
-    let dd = String(currentDate.getDate()).padStart(2, "0");
-    let mm = String(currentDate.getMonth() + 1).padStart(2, "0"); // January is 0
-    let yyyy = currentDate.getFullYear();
-    currentDate = mm + "/" + dd + "/" + yyyy;
-
     const post = {
       title: req.body.title,
       author: req.body.author,
@@ -69,5 +63,70 @@ const createPost = async (req, res) => {
   }
 };
 
+// Update a post
+const updatePost = async (req, res) => {
+  try {
+    const currentDate = new Date();
+    const postId = new ObjectId(req.params.id);
+    const post = {
+      title: req.body.title || undefined,
+      author: req.body.author || undefined,
+      lastEditDate: currentDate,
+      topics: req.body.topics || undefined,
+      status: req.body.status || undefined,
+      content: req.body.content || undefined,
+    };
 
-module.exports = { getAllPosts, getPostById, createPost };
+    // Filter out properties with undefined values so we only update specified fields
+    for (const key in post) {
+      if (post[key] === undefined) {
+        delete post[key];
+      }
+    }
+
+    console.log("post: ", post);
+    const result = await mongodb
+      .getDb()
+      .db("blog")
+      .collection("posts")
+      .updateOne({ _id: postId }, { $set: post });
+    if (result.acknowledged) {
+      res.status(200).json(result);
+    } else {
+      res
+        .status(500)
+        .json(result.error || "An error occurred while updating the post.");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+// Delete a post
+const deletePost = async (req, res) => {
+  try {
+    const postId = new ObjectId(req.params.id);
+    const result = await mongodb
+      .getDb()
+      .db("blog")
+      .collection("posts")
+      .deleteOne({ _id: postId });
+    if (result.acknowledged) {
+      res.status(200).json(result);
+    } else {
+      res
+        .status(500)
+        .json(result.error || "An error occurred while deleting the post.");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports = {
+  getAllPosts,
+  getPostById,
+  createPost,
+  updatePost,
+  deletePost,
+};
