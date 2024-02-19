@@ -1,6 +1,6 @@
 const validator = require('../helpers/validate');
 
-const newPost = async (req, res, next) => {
+const createPost = async (req, res, next) => {
     const validationRule = {
         "title": "required|string",
         "author": "required|string",
@@ -22,6 +22,32 @@ const newPost = async (req, res, next) => {
         }
     }).catch( err => console.log(err))
 }
+
+const updatePost = async (req, res, next) => {
+    const validationRule = {
+        "title": "string",
+        "author": "string",
+        "topics": "array",
+        "status": "string|in:Published,Draft",
+        "content": "string"
+    };
+
+    await validator(req.body, validationRule, {}, (err, status) => {
+        if (!status) {
+            res.status(412)
+                .send({
+                    success: false,
+                    message: 'Validation failed',
+                    data: err
+                });
+        } else {
+            next();
+        }
+    }).catch( err => console.log(err))
+}
+
+
 module.exports = {
-    newPost
+    createPost,
+    updatePost
 };

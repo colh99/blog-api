@@ -11,10 +11,10 @@ router.get('/', controller.getAllPosts);
 router.get('/:id', controller.getPostById);
 
 // Route to CREATE a new post
-router.post('/', validation.newPost, controller.createPost);
+router.post('/', validation.createPost, controller.createPost);
 
 // Route to UPDATE a post
-router.put('/:id', controller.updatePost);
+router.put('/:id', validation.updatePost, controller.updatePost);
 
 // Route to DELETE a post
 router.delete('/:id', controller.deletePost);
