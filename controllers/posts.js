@@ -83,7 +83,7 @@ const updatePost = async (req, res) => {
     .collection("posts")
     .updateOne({ _id: postId }, { $set: post });
     if (result.modifiedCount > 0) {
-      res.status(200).json(result);
+      res.status(204).json(result);
     } else {
       res
         .status(500)
