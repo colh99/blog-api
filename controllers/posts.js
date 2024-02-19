@@ -34,7 +34,6 @@ const getPostById = async (req, res) => {
 
 // Create a new post using json data
 const createPost = async (req, res) => {
-  try {
     let currentDate = new Date();
     const post = {
       title: req.body.title,
@@ -43,29 +42,25 @@ const createPost = async (req, res) => {
       lastEditDate: "None",
       topics: req.body.topics,
       status: req.body.status,
-      content: req.body.content
-    };
-    console.log(post);
-    const result = await mongodb
-      .getDb()
-      .db("blog")
-      .collection("posts")
-      .insertOne(post);
-    if (result.acknowledged) {
-      res.status(201).json(result);
-    } else {
-      res
-        .status(500)
-        .json(result.error || "An error occurred while creating the post.");
-    }
-  } catch (err) {
-    res.status(500).json(err);
+    content: req.body.content,
+  };
+  console.log(post);
+  const result = await mongodb
+    .getDb()
+    .db("blog")
+    .collection("posts")
+    .insertOne(post);
+  if (result.acknowledged) {
+    res.status(201).json(result);
+  } else {
+    res
+      .status(500)
+      .json(result.error || "An error occurred while creating the post.");
   }
 };
 
 // Update a post
 const updatePost = async (req, res) => {
-  try {
     const currentDate = new Date();
     const postId = new ObjectId(req.params.id);
     const post = {
@@ -76,50 +71,40 @@ const updatePost = async (req, res) => {
       status: req.body.status || undefined,
       content: req.body.content || undefined,
     };
-
     // Filter out properties with undefined values so we only update specified fields
     for (const key in post) {
       if (post[key] === undefined) {
         delete post[key];
       }
     }
-
-    console.log("post: ", post);
-    const result = await mongodb
-      .getDb()
-      .db("blog")
-      .collection("posts")
-      .updateOne({ _id: postId }, { $set: post });
-    if (result.acknowledged) {
+  const result = await mongodb
+    .getDb()
+    .db("blog")
+    .collection("posts")
+    .updateOne({ _id: postId }, { $set: post });
+    if (result.modifiedCount > 0) {
       res.status(200).json(result);
     } else {
       res
         .status(500)
         .json(result.error || "An error occurred while updating the post.");
-    }
-  } catch (err) {
-    res.status(500).json(err);
   }
 };
 
 // Delete a post
 const deletePost = async (req, res) => {
-  try {
-    const postId = new ObjectId(req.params.id);
-    const result = await mongodb
-      .getDb()
-      .db("blog")
-      .collection("posts")
-      .deleteOne({ _id: postId });
-    if (result.acknowledged) {
-      res.status(200).json(result);
-    } else {
-      res
-        .status(500)
-        .json(result.error || "An error occurred while deleting the post.");
-    }
-  } catch (err) {
-    res.status(500).json(err);
+  const postId = new ObjectId(req.params.id);
+  const result = await mongodb
+    .getDb()
+    .db("blog")
+    .collection("posts")
+    .deleteOne({ _id: postId });
+  if (result.deletedCount > 0) {
+    res.status(200).json(result);
+  } else {
+    res
+      .status(500)
+      .json(result.error || "An error occurred while deleting the post.");
   }
 };
 

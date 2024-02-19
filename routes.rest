@@ -4,7 +4,7 @@
 GET http://localhost:3000/posts
 
 ### Get a single post by ID
-GET http://localhost:3000/posts/65c81c2049e45e4778590256
+GET http://localhost:3000/posts/65d05f9b13930c39e1da0fa0
 
 ### Create a new post
 POST http://localhost:3000/posts

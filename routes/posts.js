@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+
 const controller = require('../controllers/posts');
+const validation = require('../middleware/validate');
 
 // Route to READ all data
 router.get('/', controller.getAllPosts);
@@ -9,7 +11,7 @@ router.get('/', controller.getAllPosts);
 router.get('/:id', controller.getPostById);
 
 // Route to CREATE a new post
-router.post('/', controller.createPost);
+router.post('/', validation.newPost, controller.createPost);
 
 // Route to UPDATE a post
 router.put('/:id', controller.updatePost);
