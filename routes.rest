@@ -11,11 +11,11 @@ POST http://localhost:3000/posts
 content-type: application/json
     
 {
-  "title": "any",
-  "author": "any",
-  "topics": "any",
-  "status": "any",
-  "content": "any"
+  "title": "",
+  "author": "",
+  "topics": [],
+  "status": "",
+  "content": ""
 }
 
 ### Update a post
@@ -23,11 +23,11 @@ PUT http://localhost:3000/posts/65d05fe013930c39e1da0fa1
 content-type: application/json
     
 {
-  //"title": "any",
-  //"author": "any",
-  //"topics": "any",
-  //"status": "any",
-  "content": "This post has been edited. That's cool!"
+  "title": "",
+  "author": "",
+  "topics": [],
+  "status": "",
+  "content": ""
 }
 
 ### Delete a post
@@ -47,11 +47,11 @@ POST https://blog-api-service-ehy4.onrender.com/posts
 content-type: application/json
     
 {
-  "title": "any",
-  "author": "any",
-  "topics": "any",
-  "status": "any",
-  "content": "any"
+  "title": "",
+  "author": "",
+  "topics": [],
+  "status": "",
+  "content": ""
 }
 
 ### Update a post
@@ -59,11 +59,11 @@ PUT https://blog-api-service-ehy4.onrender.com/posts/65c97f13923abcac07b9094a
 content-type: application/json
     
 {
-  //"title": "any",
-  //"author": "any",
-  //"topics": "any",
-  //"status": "any",
-  "content": "This post has been edited. That's cool!"
+  "title": "",
+  "author": "",
+  "topics": [],
+  "status": "",
+  "content": ""
 }
 
 ### Delete a post
