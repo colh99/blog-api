@@ -46,19 +46,19 @@
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "example": ""
                 },
                 "author": {
-                  "example": "any"
+                  "example": ""
                 },
                 "topics": {
-                  "example": "any"
+                  "example": []
                 },
                 "status": {
-                  "example": "any"
+                  "example": ""
                 },
                 "content": {
-                  "example": "any"
+                  "example": ""
                 }
               }
             }
@@ -116,19 +116,19 @@
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "example": ""
                 },
                 "author": {
-                  "example": "any"
+                  "example": ""
                 },
                 "topics": {
-                  "example": "any"
+                  "example": []
                 },
                 "status": {
-                  "example": "any"
+                  "example": ""
                 },
                 "content": {
-                  "example": "any"
+                  "example": ""
                 }
               }
             }
