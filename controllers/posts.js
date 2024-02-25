@@ -34,14 +34,14 @@ const getPostById = async (req, res) => {
 
 // Create a new post using json data
 const createPost = async (req, res) => {
-    let currentDate = new Date();
-    const post = {
-      title: req.body.title,
-      author: req.body.author,
-      createdDate: currentDate,
-      lastEditDate: "None",
-      topics: req.body.topics,
-      status: req.body.status,
+  let currentDate = new Date();
+  const post = {
+    title: req.body.title,
+    author: req.body.author,
+    createdDate: currentDate,
+    lastEditDate: "None",
+    topics: req.body.topics,
+    status: req.body.status,
     content: req.body.content,
   };
   console.log(post);
@@ -61,33 +61,33 @@ const createPost = async (req, res) => {
 
 // Update a post
 const updatePost = async (req, res) => {
-    const currentDate = new Date();
-    const postId = new ObjectId(req.params.id);
-    const post = {
-      title: req.body.title || undefined,
-      author: req.body.author || undefined,
-      lastEditDate: currentDate,
-      topics: req.body.topics || undefined,
-      status: req.body.status || undefined,
-      content: req.body.content || undefined,
-    };
-    // Filter out properties with undefined values so we only update specified fields
-    for (const key in post) {
-      if (post[key] === undefined) {
-        delete post[key];
-      }
+  const currentDate = new Date();
+  const postId = new ObjectId(req.params.id);
+  const post = {
+    title: req.body.title || undefined,
+    author: req.body.author || undefined,
+    lastEditDate: currentDate,
+    topics: req.body.topics || undefined,
+    status: req.body.status || undefined,
+    content: req.body.content || undefined,
+  };
+  // Filter out properties with undefined values so we only update specified fields
+  for (const key in post) {
+    if (post[key] === undefined) {
+      delete post[key];
     }
+  }
   const result = await mongodb
     .getDb()
     .db("blog")
     .collection("posts")
     .updateOne({ _id: postId }, { $set: post });
-    if (result.modifiedCount > 0) {
-      res.status(204).json(result);
-    } else {
-      res
-        .status(500)
-        .json(result.error || "An error occurred while updating the post.");
+  if (result.modifiedCount > 0) {
+    res.status(204).json(result);
+  } else {
+    res
+      .status(500)
+      .json(result.error || "An error occurred while updating the post.");
   }
 };
 

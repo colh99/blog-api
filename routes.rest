@@ -39,6 +39,30 @@ GET http://localhost:3000/authors
 ### Get a single author by ID
 GET http://localhost:3000/authors/65dabec54bd60276d8065347
 
+### Create a new author
+POST http://localhost:3000/authors
+content-type: application/json
+    
+{
+  "name": "Author Name",
+  "about": "This is the about section for the author.",
+  "favoriteTopics": ["A Topic", "Another Topic"],
+}
+
+### Update an author
+PUT http://localhost:3000/authors/65dabec54bd60276d8065347
+content-type: application/json
+    
+{
+  "name": "",
+  "about": "",
+  "favoriteTopics": [],
+}
+
+### Delete an author
+DELETE http://localhost:3000/posts/65dabec54bd60276d8065347
+
+
 
 // PRODUCTION Deploy
 
@@ -80,3 +104,26 @@ GET https://blog-api-service-ehy4.onrender.com/authors
 
 ### Get a single author by ID
 GET https://blog-api-service-ehy4.onrender.com/authors/65dabec54bd60276d8065347
+
+### Create a new author
+POST https://blog-api-service-ehy4.onrender.com/authors
+content-type: application/json
+    
+{
+  "name": "Author Name",
+  "about": "This is the about section for the author.",
+  "favoriteTopics": ["A Topic", "Another Topic"],
+}
+
+### Update an author
+PUT https://blog-api-service-ehy4.onrender.com/authors/65dabec54bd60276d8065347
+content-type: application/json
+    
+{
+  "name": "",
+  "about": "",
+  "favoriteTopics": [],
+}
+
+### Delete an author
+DELETE https://blog-api-service-ehy4.onrender.com/posts/65dabec54bd60276d8065347

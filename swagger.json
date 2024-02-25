@@ -23,6 +23,9 @@
     },
     "/posts/": {
       "get": {
+        "tags": [
+          "posts"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -37,6 +40,9 @@
         }
       },
       "post": {
+        "tags": [
+          "posts"
+        ],
         "description": "",
         "parameters": [
           {
@@ -79,6 +85,9 @@
     },
     "/posts/{id}": {
       "get": {
+        "tags": [
+          "posts"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -101,6 +110,9 @@
         }
       },
       "put": {
+        "tags": [
+          "posts"
+        ],
         "description": "",
         "parameters": [
           {
@@ -147,6 +159,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "posts"
+        ],
         "description": "",
         "parameters": [
           {
@@ -168,6 +183,9 @@
     },
     "/authors/": {
       "get": {
+        "tags": [
+          "authors"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -180,14 +198,119 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "authors"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": ""
+                },
+                "about": {
+                  "example": ""
+                },
+                "favoriteTopics": {
+                  "example": []
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/authors/{id}": {
       "get": {
+        "tags": [
+          "authors"
+        ],
         "description": "",
         "produces": [
           "application/json"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "authors"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": ""
+                },
+                "about": {
+                  "example": ""
+                },
+                "favoriteTopics": {
+                  "example": []
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "authors"
+        ],
+        "description": "",
         "parameters": [
           {
             "name": "id",
