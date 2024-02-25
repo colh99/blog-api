@@ -4,18 +4,18 @@
 GET http://localhost:3000/posts
 
 ### Get a single post by ID
-GET http://localhost:3000/posts/65d05f9b13930c39e1da0fa0
+GET http://localhost:3000/posts/65d3bd798264c63979a7fa61
 
 ### Create a new post
 POST http://localhost:3000/posts
 content-type: application/json
     
 {
-  "title": "",
-  "author": "",
-  "topics": [],
-  "status": "",
-  "content": ""
+  "title": "New Post",
+  "author": "Me",
+  "topics": ["A Topic", "Another Topic"],
+  "status": "Draft",
+  "content": "This is another new post."
 }
 
 ### Update a post
@@ -32,6 +32,12 @@ content-type: application/json
 
 ### Delete a post
 DELETE http://localhost:3000/posts/65c97f13923abcac07b9094a
+
+### Get all authors
+GET http://localhost:3000/authors
+
+### Get a single author by ID
+GET http://localhost:3000/authors/65dabec54bd60276d8065347
 
 
 // PRODUCTION Deploy
@@ -68,3 +74,9 @@ content-type: application/json
 
 ### Delete a post
 DELETE https://blog-api-service-ehy4.onrender.com/posts/65c97f13923abcac07b9094a
+
+### Get all authors
+GET https://blog-api-service-ehy4.onrender.com/authors
+
+### Get a single author by ID
+GET https://blog-api-service-ehy4.onrender.com/authors/65dabec54bd60276d8065347

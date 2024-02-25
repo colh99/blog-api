@@ -1,0 +1,13 @@
+[
+    {
+      "name": "Colby Hale",
+      "about": "Colby is a software engineer studying at BYU-I. He is really cool.",
+      "favoriteTopics": ["Programming", "Soccer", "Video Games"]
+    },
+    {
+        "name": "John Doe",
+        "about": "John is a made up person for testing purposes. He is not real. Don't worry about him.",
+        "favoriteTopics": ["Placeholder", "Testing"]
+      }
+  ]
+  
