@@ -1,9 +1,34 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./db/connect');
+const { auth, requiresAuth } = require('express-openid-connect');
 
 const port = process.env.PORT || 3000;
 const app = express();
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: process.env.AUTH_SECRET,
+  //baseURL: 'http://localhost:3000',
+  baseURL: 'https://blog-api-service-ehy4.onrender.com',
+  clientID: 'YVs3yBb3plzELjqVAn8uCh8a9xNsPz0p',
+  issuerBaseURL: 'https://dev-wd8d1nsmhc0xwqfo.us.auth0.com'
+};
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+// req.isAuthenticated is provided from the auth router
+app.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});
+
+
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
+
 
 app
   .use(bodyParser.json())

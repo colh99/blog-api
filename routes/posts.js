@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const { requiresAuth } = require('express-openid-connect');
 
 const controller = require('../controllers/posts');
 const validation = require('../middleware/validate');
+
 
 // Route to READ all data
 router.get('/', controller.getAllPosts);
@@ -11,12 +13,12 @@ router.get('/', controller.getAllPosts);
 router.get('/:id', controller.getPostById);
 
 // Route to CREATE a new post
-router.post('/', validation.createPost, controller.createPost);
+router.post('/', requiresAuth(), validation.createPost, controller.createPost);
 
 // Route to UPDATE a post
-router.put('/:id', validation.updatePost, controller.updatePost);
+router.put('/:id', requiresAuth(), validation.updatePost, controller.updatePost);
 
 // Route to DELETE a post
-router.delete('/:id', controller.deletePost);
+router.delete('/:id', requiresAuth(), controller.deletePost);
 
 module.exports = router;
