@@ -1,14 +1,25 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
-    "description": "Blog API",
+    "title": "Blog API",
+    "description": "API for a simple blog application. Creating or modifiying data requires authentication. You can use /login or /logout endpoints, or /profile to see the user profile.",
     "version": "1.0.0"
   },
   "host": "blog-api-service-ehy4.onrender.com",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Authors",
+      "description": "Endpoints for authors"
+    },
+    {
+      "name": "Posts",
+      "description": "Endpoints for posts"
+    }
+  ],
   "schemes": [
-    "https"
+    "https",
+    "http"
   ],
   "paths": {
     "/api-docs": {
@@ -24,7 +35,7 @@
     "/posts/": {
       "get": {
         "tags": [
-          "posts"
+          "Posts"
         ],
         "description": "",
         "produces": [
@@ -41,32 +52,46 @@
       },
       "post": {
         "tags": [
-          "posts"
+          "Posts"
         ],
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "Add new post",
             "schema": {
               "type": "object",
               "properties": {
                 "title": {
+                  "type": "string",
                   "example": ""
                 },
                 "author": {
+                  "type": "string",
                   "example": ""
                 },
                 "topics": {
-                  "example": []
+                  "type": "array",
+                  "example": [],
+                  "items": {}
                 },
                 "status": {
+                  "type": "string",
                   "example": ""
                 },
                 "content": {
+                  "type": "string",
                   "example": ""
                 }
-              }
+              },
+              "required": [
+                "title",
+                "author",
+                "topics",
+                "status",
+                "content"
+              ]
             }
           }
         ],
@@ -86,7 +111,7 @@
     "/posts/{id}": {
       "get": {
         "tags": [
-          "posts"
+          "Posts"
         ],
         "description": "",
         "produces": [
@@ -111,7 +136,7 @@
       },
       "put": {
         "tags": [
-          "posts"
+          "Posts"
         ],
         "description": "",
         "parameters": [
@@ -124,22 +149,29 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Update a post",
             "schema": {
               "type": "object",
               "properties": {
                 "title": {
+                  "type": "string",
                   "example": ""
                 },
                 "author": {
+                  "type": "string",
                   "example": ""
                 },
                 "topics": {
-                  "example": []
+                  "type": "array",
+                  "example": [],
+                  "items": {}
                 },
                 "status": {
+                  "type": "string",
                   "example": ""
                 },
                 "content": {
+                  "type": "string",
                   "example": ""
                 }
               }
@@ -160,7 +192,7 @@
       },
       "delete": {
         "tags": [
-          "posts"
+          "Posts"
         ],
         "description": "",
         "parameters": [
@@ -184,7 +216,7 @@
     "/authors/": {
       "get": {
         "tags": [
-          "authors"
+          "Authors"
         ],
         "description": "",
         "produces": [
@@ -201,26 +233,41 @@
       },
       "post": {
         "tags": [
-          "authors"
+          "Authors"
         ],
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "Add new author",
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
-                  "example": ""
+                  "type": "string",
+                  "example": "John Doe"
                 },
                 "about": {
-                  "example": ""
+                  "type": "string",
+                  "example": "About John Doe"
                 },
                 "favoriteTopics": {
-                  "example": []
+                  "type": "array",
+                  "example": [
+                    "topic1",
+                    "topic2"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
                 }
-              }
+              },
+              "required": [
+                "name",
+                "about",
+                "favoriteTopics"
+              ]
             }
           }
         ],
@@ -240,7 +287,7 @@
     "/authors/{id}": {
       "get": {
         "tags": [
-          "authors"
+          "Authors"
         ],
         "description": "",
         "produces": [
@@ -265,7 +312,7 @@
       },
       "put": {
         "tags": [
-          "authors"
+          "Authors"
         ],
         "description": "",
         "parameters": [
@@ -278,19 +325,34 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Update an author",
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
-                  "example": ""
+                  "type": "string",
+                  "example": "John Doe"
                 },
                 "about": {
-                  "example": ""
+                  "type": "string",
+                  "example": "About John Doe"
                 },
                 "favoriteTopics": {
-                  "example": []
+                  "type": "array",
+                  "example": [
+                    "topic1",
+                    "topic2"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
                 }
-              }
+              },
+              "required": [
+                "name",
+                "about",
+                "favoriteTopics"
+              ]
             }
           }
         ],
@@ -308,7 +370,7 @@
       },
       "delete": {
         "tags": [
-          "authors"
+          "Authors"
         ],
         "description": "",
         "parameters": [
